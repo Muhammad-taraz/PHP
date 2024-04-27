@@ -9,12 +9,7 @@
         .container {
             margin-top: 50px;
         }
-        /* h1 {
-            font-family: Arial, sans-serif;
-            color: #333;
-            font-size: 24px;
-            /* Add more styles as needed */
-        } */
+
     </style>
 </head>
 <body>
