@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container mt-3">
         <h2>Signup Form</h2>
         <form action="signup.php" method="post">
             <div class="form-group">
@@ -39,7 +39,7 @@
                     <option value="">Select City</option>
                     
                     <?php
-                    $cities = ['Karachi', 'Lahore', 'Islamabad', 'Rawalpindi', 'Faisalabad', 'Multan', 'Sukkur']; 
+                    $cities = ['Karachi', 'Lahore', 'Islamabad', 'Attock', 'Faisalabad', 'Multan', 'Mandi Bahuddin', 'Narowal', 'Sialkot', 'Abbottabad', 'Gujrat', 'Nowshera']; 
                     foreach ($cities as $city) {
                         echo "<option value='$city'>$city</option>";
                     }
@@ -48,32 +48,29 @@
             </div>
             <div class="form-group">
                 <label for="citiesVisited">Cities Visited:</label> <br>
-                <input type="checkbox" name="cities_visited" >Karachi <br>
-                <input type="checkbox" name="cities_visited" >Lahore <br>
-                <input type="checkbox" name="cities_visited" >Islamabad <br>
-                <input type="checkbox" name="cities_visited" >Rawalpindi <br>
-                <input type="checkbox" name="cities_visited" >Faisalabad <br>
-                <input type="checkbox" name="cities_visited" >Multan <br>
-                <input type="checkbox" name="cities_visited" >Sukkur <br>
+                <input type="checkbox" name="citiesVisited" >Karachi <br>
+                <input type="checkbox" name="citiesVisited" >Lahore <br>
+                <input type="checkbox" name="citiesVisited" >Islamabad <br>
+                <input type="checkbox" name="citiesVisited" >Attock <br>
+                <input type="checkbox" name="citiesVisited" >Faisalabad <br>
+                <input type="checkbox" name="citiesVisited" >Multan <br>
+                <input type="checkbox" name="citiesVisited" >Mandi Bahuddin <br>
+                <input type="checkbox" name="citiesVisited" >Narowal <br>
+                <input type="checkbox" name="citiesVisited" >Sialkot <br>
+                <input type="checkbox" name="citiesVisited" >Abbottabad	 <br>
+                <input type="checkbox" name="citiesVisited" >Gujrat <br>
+                <input type="checkbox" name="citiesVisited" >Nowshera <br>
 
 
                 <?php
-                 if(isset($_POST['cities_visited'])){
-                $cites =$_POST['cities_visited'];
+                 if(isset($_POST['citiesVisited'])){
+                $cites =$_POST['citiesVisited'];
 
                     echo $cites;
                  }
                     ?>
-
-                 <!-- <select class="form-control" id="citiesVisited" name="citiesVisited[]" multiple required>                
-                    <?php
-                    foreach ($cities as $city) {
-                        echo "<option value='$city'>$city</option>";
-                    }
-                    ?> -->
-                </select>
             </div>
-            <button type="submit" class="btn btn-primary">Signup</button>
+            <button type="submit" class="btn btn-outline-primary mb-3">Signup</button>
         </form>
     </div>
 </body>

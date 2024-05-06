@@ -1,70 +1,35 @@
-<?php
-session_start();
-
-// Function to read JSON file into an array
-function getUsers() {
-    $json = file_get_contents('users.json');
-    return json_decode($json, true);
-}
-
-// Check if form is submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
-    $password = md5($_POST['password']);
-
-    // Get existing users data
-    $users = getUsers();
-
-    // Check if email exists
-    if (isset($users[$email])) {
-        // Check if password hash matches
-        if ($password === $users[$email]['password']) {
-            // Add user data to session
-            $_SESSION['user'] = $users[$email];
-
-            // Update last login timestamp
-            $users[$email]['last_login'] = date('Y-m-d H:i:s');
-            updateUserJson($users);
-
-            // Redirect to welcome.php or any other page
-            header('Location: welcome.php');
-            exit;
-        } else {
-            $error = "Incorrect password";
-        }
-    } else {
-        $error = "Email not found";
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
+
 <body>
-    <div class="container mt-4">
-        <h2>Login</h2>
-        <?php if (isset($error)) { ?>
-            <div class="alert alert-danger" role="alert">
-                <?php echo $error; ?>
+    <div class="container mt-3">
+                <h2>Login Form</h2>
+                <form action="./Welcome.php" method="post">
+                <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" class="form-control" id="fullName" name="fullName" required>
             </div>
-        <?php } ?>
-        <form method="post">
-            <div class="form-group">
-                <label>Email:</label>
-                <input type="email" name="email" class="form-control" required>
+                    <div class="form-group">
+                        <label>Gender:</label><br>
+                        <input type="radio" class="form-check-input" id="Male" name="gender" value="Male" required>Male <br>
+                        <input type="radio" class="form-check-input" id="Female" name="gender" value="Female" required>Female <br>
+                    </div>
+                    <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" class="form-control" id="dob" name="dob" required>
             </div>
-            <div class="form-group">
-                <label>Password:</label>
-                <input type="password" name="password" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
+            <button type="submit" class="btn btn-outline-primary mb-3">Login</button>
+             </form>
     </div>
+
 </body>
+
 </html>
