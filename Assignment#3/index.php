@@ -9,7 +9,7 @@
 <body>
     <div class="container mt-3">
         <h2>Signup Form</h2>
-        <form action="signup.php" method="post">
+        <form action="./Signup.php" method="post">
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" class="form-control" id="email" name="email" required>
