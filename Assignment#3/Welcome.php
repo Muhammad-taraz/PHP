@@ -56,10 +56,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <?php
 
                                   if($Gender == "Female"){
-                                    echo "Miss &nbsp" .$Full_Name;
+                                    echo "Miss &nbsp" .$fullName;
                                   }
                                   elseif($Gender == "Male"){
-                                    echo "Mr &nbsp" .$Full_Name;
+                                    echo "Mr &nbsp" .$fullName;
                                   }
                                 ?> 
                             </div>

@@ -22,10 +22,10 @@
                         <input type="radio" class="form-check-input" id="Male" name="gender" value="Male" required>Male <br>
                         <input type="radio" class="form-check-input" id="Female" name="gender" value="Female" required>Female <br>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                 <label for="dob">Date of Birth:</label>
                 <input type="date" class="form-control" id="dob" name="dob" required>
-            </div>
+            </div> -->
             <button type="submit" class="btn btn-outline-primary mb-3">Login</button>
              </form>
     </div>
