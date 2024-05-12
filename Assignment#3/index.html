@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Signup</h2>
+        <form action="signup_process.php" method="POST">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="fullname">Full Name:</label>
+                <input type="text" class="form-control" id="fullname" name="fullname" required>
+            </div>
+            <div class="form-group">
+                <label>Gender:</label><br>
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label><br>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" class="form-control" id="dob" name="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <select class="form-control" id="city" name="city" required>
+                
+                    <option value="Karachi">Attock</option>
+                    <option value="Karachi">Multan</option>
+                    <option value="Karachi">Narowal</option>
+                    <option value="Karachi">Mandi Bahuddin</option>
+                    <option value="Karachi">Naran</option>
+                    <option value="Karachi">Abottabad</option>
+                    <option value="Karachi">Lahore</option>
+                    <option value="Karachi">Islamabad</option>
+                    <option value="Karachi">Sukkur</option>
+                    <option value="Karachi">Karachi</option>
+                    <option value="Karachi">Hyderabad</option>
+                    <option value="Karachi">Shikarpur</option>
+                
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cities_visited">Cities Visited:</label>
+                <select class="form-control" id="cities_visited" name="cities_visited[]" multiple required>
+                
+                    <option value="Karachi">Attock</option>
+                    <option value="Karachi">Multan</option>
+                    <option value="Karachi">Narowal</option>
+                    <option value="Karachi">Mandi Bahuddin</option>
+                    <option value="Karachi">Naran</option>
+                    <option value="Karachi">Abottabad</option>
+                    <option value="Karachi">Lahore</option>
+                    <option value="Karachi">Islamabad</option>
+                    <option value="Karachi">Sukkur</option>
+                    <option value="Karachi">Karachi</option>
+                    <option value="Karachi">Hyderabad</option>
+                    <option value="Karachi">Shikarpur</option>
+                
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <p>Already have an account? <a href="login.php">Login</a></p>
+    </div>
+</body>
+</html>

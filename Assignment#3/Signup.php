@@ -1,48 +1,35 @@
 <?php
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Read form data
     $email = $_POST["email"];
     $password = md5($_POST["password"]);
-    $fullName = $_POST["fullName"];
+    $fullname = $_POST["fullname"];
     $gender = $_POST["gender"];
     $dob = $_POST["dob"];
     $city = $_POST["city"];
-    $citiesVisited = $_POST["citiesVisited"];
+    $cities_visited = $_POST["cities_visited"];
+    
+    // Other form fields
 
-    // Read existing data from text.php
-    $existing_data = file_get_contents("text.php");
+    // Read existing users
+    $users = json_decode(file_get_contents("users.json"), true);
 
-    // Decode existing data if it contains JSON
-    $users_data = json_decode($existing_data, true);
-
-    // Check if decoding was successful
-    if ($users_data === null) {
-        // If decoding failed, initialize an empty array
-        $users_data = [];
-    }
-
-    if (isset($users_data[$email])) {
+    // Check if email already exists
+    if (array_key_exists($email, $users)) {
         echo "You are already registered.";
     } else {
-        // Add new user data to the array
-        $users_data[$email] = [
-            "email" => $email,
+        // Add user data to users.json
+        $users[$email] = [
             "password" => $password,
-            "fullName" => $fullName,
+            "fullname" => $fullname,
             "gender" => $gender,
             "dob" => $dob,
             "city" => $city,
-            "citiesVisited" => $citiesVisited,
-            "last_login" => null
+            "cities_visited" => $cities_visited
+            // Other fields
         ];
-
-        // Encode the updated data as JSON
-        $json_data = json_encode($users_data);
-
-        // Write the JSON data to text.php, appending it to existing content
-        file_put_contents("text.php", $json_data . PHP_EOL, FILE_APPEND);
-
-        echo "Signup Successful!";
+        file_put_contents("users.json", json_encode($users));
+        echo "Signup successful!";
     }
 }
 ?>
