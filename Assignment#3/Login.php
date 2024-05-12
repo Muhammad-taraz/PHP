@@ -1,26 +1,24 @@
 <?php
 session_start();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
-    // Read form data
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["Login"])) {
+
     $email = $_POST["email"];
     $password = md5($_POST["password"]);
 
-    // Read existing users
-    $users = json_decode(file_get_contents("users.json"), true);
+    $users = json_decode(file_get_contents("Users.json"), true);
 
-    // Check if email exists
     if (array_key_exists($email, $users)) {
-        // Check password
+        
         if ($users[$email]["password"] == $password) {
-            // Add user data to session
+            
             $_SESSION["email"] = $email;
-            $_SESSION["last_login"] = time();
-            // Update last login timestamp in JSON
-            $users[$email]["last_login"] = $_SESSION["last_login"];
-            file_put_contents("users.json", json_encode($users));
-            // Redirect to welcome page
-            header("Location: welcome.php");
+            $_SESSION["last_Login"] = time();
+            
+            $users[$email]["last_Login"] = $_SESSION["last_Login"];
+            file_put_contents("Users.json", json_encode($users));
+            
+            header("Location: Welcome.php");
             exit();
         } else {
             $error = "Incorrect password.";
@@ -40,9 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container mt-5">
         <h2>Login</h2>
-        <form action="login.php" method="post">
+        <form action="Login.php" method="post">
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" class="form-control" id="email" name="email" required>
@@ -51,9 +49,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
                 <label for="password">Password:</label>
                 <input type="password" class="form-control" id="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-primary" name="login">Login</button>
+            <button type="submit" class="btn btn-primary" name="Login">Login</button>
             <?php if(isset($error)) echo "<div class='text-danger'>$error</div>"; ?>
         </form>
+        <div class= "child mt-3">
+        <p>Don't have an account?    <a href="index.html">Signup</a></p>
+        </div>
     </div>
 </body>
 </html>

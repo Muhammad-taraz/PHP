@@ -1,6 +1,5 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Read form data
     $email = $_POST["email"];
     $password = md5($_POST["password"]);
     $fullname = $_POST["fullname"];
@@ -8,17 +7,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dob = $_POST["dob"];
     $city = $_POST["city"];
     $cities_visited = $_POST["cities_visited"];
-    
-    // Other form fields
+   
+    $users = json_decode(file_get_contents("Users.json"), true);
 
-    // Read existing users
-    $users = json_decode(file_get_contents("users.json"), true);
-
-    // Check if email already exists
     if (array_key_exists($email, $users)) {
         echo "You are already registered.";
     } else {
-        // Add user data to users.json
         $users[$email] = [
             "password" => $password,
             "fullname" => $fullname,
@@ -26,9 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "dob" => $dob,
             "city" => $city,
             "cities_visited" => $cities_visited
-            // Other fields
         ];
-        file_put_contents("users.json", json_encode($users));
+        file_put_contents("Users.json", json_encode($users));
         echo "Signup successful!";
     }
 }
