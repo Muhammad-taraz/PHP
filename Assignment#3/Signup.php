@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $city = $_POST["city"];
     $cities_visited = $_POST["cities_visited"];
    
-    $users = json_decode(file_get_contents("Users.json"), true);
+    $users = json_decode(file_get_contents("users.json"), true);
 
     if (array_key_exists($email, $users)) {
         echo "You are already registered.";
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "city" => $city,
             "cities_visited" => $cities_visited
         ];
-        file_put_contents("Users.json", json_encode($users));
+        file_put_contents("users.json", json_encode($users));
         echo "Signup successful!";
     }
 }

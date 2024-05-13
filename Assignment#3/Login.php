@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["Login"])) {
     $email = $_POST["email"];
     $password = md5($_POST["password"]);
 
-    $users = json_decode(file_get_contents("Users.json"), true);
+    $users = json_decode(file_get_contents("users.json"), true);
 
     if (array_key_exists($email, $users)) {
         
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["Login"])) {
             $_SESSION["last_Login"] = time();
             
             $users[$email]["last_Login"] = $_SESSION["last_Login"];
-            file_put_contents("Users.json", json_encode($users));
+            file_put_contents("users.json", json_encode($users));
             
             header("Location: Welcome.php");
             exit();
