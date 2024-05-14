@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="card mb-3">
                         <div class="card-body">
                             <h5 class="card-title">Welcome</h5>
-                            <p class="card-text">Welcome <?php echo ($gender == 'male') ? 'Mr. ' . $full_name : 'Miss ' . $full_name; ?></p>
+                            <p class="card-text">Welcome <?php echo ($gender == 'Male') ? 'Mr. ' . $full_name : 'Miss ' . $full_name; ?></p>
                         </div>
                     </div>
                     <div class="card mb-3">
